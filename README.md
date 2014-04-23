@@ -30,7 +30,7 @@ plugin.
 Put the following in your application's `Gemfile`:
 
     group :development do
-      gem 'capistrano', '~> 3.1'
+      gem 'capistrano', '>= 3.1'
       gem 'capistrano-ssh-doctor'
     end
 
