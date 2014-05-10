@@ -1,6 +1,10 @@
-require 'capistrano/ssh_doctor/dsl'
+require 'capistrano/ssh_doctor/report'
 
 namespace :ssh do
+
+  def report
+    @report ||= Capistrano::SshDoctor::Report.new
+  end
 
   namespace :config do
 

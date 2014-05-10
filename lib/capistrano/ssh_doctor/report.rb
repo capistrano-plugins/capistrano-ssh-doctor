@@ -4,11 +4,7 @@ module Capistrano
   module SshDoctor
     class Report
 
-      include Capistrano::SshDoctor::Report::Messages
-
-      def self.report
-        @report ||= new
-      end
+      include Messages
 
       def initialize
         @report_messages = default_messages
