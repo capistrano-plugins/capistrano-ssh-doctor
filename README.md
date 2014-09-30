@@ -3,11 +3,12 @@
 This plugin helps you setup and debug `ssh-agent` forwarding for Capistrano
 deployment.
 
-It's created to complement the official [capistrano authentication guide](http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/).
+It's created to complement the official
+[capistrano authentication guide](http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/).
 
 The following is presumed:
 - you're using `git`
-- you want to use passwordless ssh login to the servers
+- you want to use passwordless ssh to login to the servers
 - you want to use the `ssh-agent` forwarding strategy for checking out code in
 the remote repository (btw. good choice, it's a least hassle)
 
@@ -21,16 +22,12 @@ this configuration. The above assumptions should hold true for 98% users.
 The plugin is made for beginners and users that are not sure if their setup is
 good, so they want to confirm or debug it.
 
-If you have enough knowldge/experience with `ssh` tool and you're sure you have
-`ssh-agent` forwarding working for your server, you probably don't need this
-plugin.
-
 ### Installation
 
 Put the following in your application's `Gemfile`:
 
     group :development do
-      gem 'capistrano', '>= 3.1'
+      gem 'capistrano', '~> 3.2.1'
       gem 'capistrano-ssh-doctor'
     end
 
@@ -50,15 +47,15 @@ In the console run:
 
     $ bundle exec cap production ssh:doctor
 
-The plugin will perform a number of checks and output a report at the end.
+A number of checks will be performed and you'll get a report at the end.
 
-**Solving Errors**
+#### Solving Errors
 
 In case there are errors in your setup, specific instructions for next
 steps will be provided in report output.
 
 **Important:** errors should be tackled in the order of their output. So, if
-you got errors 2, 5 and 7 in the report, start by solving error 2.
+you get errors 2, 5 and 7 in the report, start by solving error 2.
 
 It is very probable that "solving" one or two initial errors will actually make
 everything work. A lot of the checks are inter-dependent. So don't be
@@ -72,7 +69,7 @@ tasks. You're ok with proceeding with the deployment then.
 
 ### Which checks are performed?
 
-1. checks that you're using `git` repository protocol
+1. checks that you're using `git` as a `scm`
 2. checks that ssh private key file exists locally
 3. checks if `ssh-agent` process is running locally
 4. checks that `ssh-add` process can communicate with `ssh-agent`
@@ -88,29 +85,14 @@ task.
 
 ### More Capistrano automation?
 
-If you'd like to streamline your Capistrano deploys, you might want to check
-these zero-configuration, plug-n-play plugins:
-
-- [capistrano-unicorn-nginx](https://github.com/bruno-/capistrano-unicorn-nginx)<br/>
-no-configuration unicorn and nginx setup with sensible defaults
-- [capistrano-postgresql](https://github.com/bruno-/capistrano-postgresql)<br/>
-plugin that automates postgresql configuration and setup
-- [capistrano-rbenv-install](https://github.com/bruno-/capistrano-rbenv-install)<br/>
-would you like Capistrano to install rubies for you automatically?
-- [capistrano-safe-deploy-to](https://github.com/bruno-/capistrano-safe-deploy-to)<br/>
-if you're annoyed that Capistrano does **not** create a deployment path for the
-app on the server (default `/var/www/myapp`), this is what you need!
+Check out [capistrano-plugins](https://github.com/capistrano-plugins) github org.
 
 ### Contributing and bug reports
 
 If you got stuck at some point and really can't find a solution, please open a
-[github issue](/issues) and maybe I can help you.
-
-Also, I can use your problem to improve this plugin.
+github issue and maybe I can help. Also, your problem can be used to improve
+this plugin and help others.
 
 ### License
 
 [MIT](LICENSE.md)
-
-# TODO
-- do not store text in report hash, store only success/fail there
