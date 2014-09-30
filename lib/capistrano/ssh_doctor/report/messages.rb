@@ -39,7 +39,7 @@ module Capistrano
         end
 
         def config_repo_url_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             It seems the git repository url in `repo_url` setting uses https
             protocol. Https protocol prompts for password and so git protocol
             should be used.
@@ -54,7 +54,7 @@ module Capistrano
           msg = "It seems Capistrano connects to the following hosts using password login:\n"
           msg << hosts.map(&:to_s).join(', ')
           msg.concat "\n"
-          msg.concat <<-EOF.gsub(/^\s+/, '')
+          msg.concat <<-EOF.gsub(/^ +/, '')
             It is strongly suggested to use passwordless ssh login.
 
             Actions:
@@ -72,7 +72,7 @@ module Capistrano
           msg = "It seems Capistrano connects without ssh agent forwarding to the following hosts:\n"
           msg << hosts.join(', ')
           msg.concat "\n"
-          msg.concat <<-EOF.gsub(/^\s+/, '')
+          msg.concat <<-EOF.gsub(/^ +/, '')
             Actions:
             - make sure Capistrano uses the default ssh option for `forward_agent`.
             Just remove any `forward_agent` setting from the stage file (e.g.
@@ -81,7 +81,7 @@ module Capistrano
         end
 
         def local_private_key_exists_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             Uh, oh. It seems you do not have ssh private keys generated, or they're
             not located in standard location.
 
@@ -93,7 +93,7 @@ module Capistrano
         end
 
         def local_agent_running_env_var_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             It seems `ssh-agent` is not running on local machine.
 
             Actions:
@@ -103,7 +103,7 @@ module Capistrano
         end
 
         def local_agent_running_ssh_add_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             It seems ssh-add cannot make a connection with ssh-agent process
             on local machine.
 
@@ -119,7 +119,7 @@ module Capistrano
         end
 
         def local_keys_added_to_agent_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             It seems local ssh-agent process has no loaded keys.
 
             Actions:
@@ -131,7 +131,7 @@ module Capistrano
         end
 
         def local_repo_access_error(_)
-          <<-EOF.gsub(/^\s+/, '')
+          <<-EOF.gsub(/^ +/, '')
             It seems git application repository cannot be accessed from local machine.
 
             Actions:
@@ -146,7 +146,7 @@ module Capistrano
           msg = "It seems Capistrano did not succeed in making ssh agent forwarding for these hosts:\n"
           msg << hosts.join(', ')
           msg.concat "\n"
-          msg.concat <<-EOF.gsub(/^\s+/, '')
+          msg.concat <<-EOF.gsub(/^ +/, '')
             Actions:
             - make sure all the previous checks pass
           EOF
@@ -156,7 +156,7 @@ module Capistrano
           msg = "It seems Capistrano cannot access application git repository from these hosts:\n"
           msg << hosts.join(', ')
           msg.concat "\n"
-          msg.concat <<-EOF.gsub(/^\s+/, '')
+          msg.concat <<-EOF.gsub(/^ +/, '')
             Actions:
             - make sure all the previous checks pass. That should make this one work too.
           EOF
