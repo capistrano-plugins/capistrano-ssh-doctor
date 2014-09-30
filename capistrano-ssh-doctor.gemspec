@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
     are any errors with the setup.
   EOF
   gem.summary       = 'This plugin helps you setup and debug `ssh-doctor` forwarding for Capistrano deployment.'
-  gem.homepage      = 'https://github.com/bruno-/capistrano-ssh-doctor'
+  gem.homepage      = 'https://github.com/capistrano-plugins/capistrano-ssh-doctor'
 
   gem.license       = 'MIT'
 
