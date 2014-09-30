@@ -69,11 +69,11 @@ tasks. You're ok with proceeding with the deployment then.
 
 ### Screenshots
 
-- successful report
-  ![successful report](/screenshots/report_success.png)
+successful report<br/>
+![successful report](/screenshots/report_success.png)
 
-- report with errrors
-  ![report with errors](/screenshots/report_errors.png)
+example report with errors<br/>
+![report with errors](/screenshots/report_errors.png)
 
 ### Which checks are performed?
 
