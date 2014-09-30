@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- add report screenshots
 
 ### v1.0.0
 - cosmetic changes

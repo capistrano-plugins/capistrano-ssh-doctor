@@ -67,6 +67,14 @@ progress.
 Repeat the process until `ssh:doctor` task reports success for all the
 tasks. You're ok with proceeding with the deployment then.
 
+### Screenshots
+
+- successful report
+  ![successful report](/screenshots/report_success.png)
+
+- report with errrors
+  ![report with errors](/screenshots/report_errors.png)
+
 ### Which checks are performed?
 
 1. checks that you're using `git` as a `scm`
