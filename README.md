@@ -28,7 +28,7 @@ Put the following in your application's `Gemfile`:
 
     group :development do
       gem 'capistrano', '~> 3.2.1'
-      gem 'capistrano-ssh-doctor'
+      gem 'capistrano-ssh-doctor', '~> 1.0'
     end
 
 Then run in the console:
