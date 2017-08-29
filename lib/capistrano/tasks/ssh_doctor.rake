@@ -9,9 +9,12 @@ namespace :ssh do
   namespace :config do
 
     task :git do
-      unless fetch(:scm) == :git
+      unless fetch(:repo_url) =~ /^git@/
         puts 'It seems you are NOT using git as a Capistrano strategy. At the moment capistrano-ssh-doctor supports only git.'
-        puts 'Please change `scm` setting to `:git`.'
+        puts 'Please add a valid repo_url to your settings (git@github.com/USERNAME/REPO_NAME.git) to capistrano.'
+        puts 'Don`t forget: to add these to your Capfile:'
+        puts 'require "capistrano/scm/git"'
+        puts 'install_plugin Capistrano::SCM::Git'
         exit 1
       end
     end
