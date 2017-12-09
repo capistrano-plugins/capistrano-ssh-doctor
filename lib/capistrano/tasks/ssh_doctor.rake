@@ -98,7 +98,7 @@ namespace :ssh do
       hosts = []
       on release_roles :all do
         with fetch(:git_environmental_variables) do
-          hosts << host unless strategy.check
+          hosts << host
         end
       end
       report.report_error_for('remote_repo_access', hosts) if hosts.any?
