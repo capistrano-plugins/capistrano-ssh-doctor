@@ -53,7 +53,7 @@ namespace :ssh do
       specified_keys = fetch(:ssh_options, {})[:keys] || ''
       unless File.exists?(File.expand_path('~/.ssh/id_rsa')) ||
         File.exists?(File.expand_path('~/.ssh/id_dsa')) ||
-        File.exists?(specified_keys)
+        File.exists?(specified_keys.to_s)
         report.report_error_for('local_private_key_exists')
       end
     end
