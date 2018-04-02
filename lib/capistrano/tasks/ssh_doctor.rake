@@ -9,9 +9,12 @@ namespace :ssh do
   namespace :config do
 
     task :git do
-      unless fetch(:scm) == :git
+      unless fetch(:repo_url) =~ /^git@/
         puts 'It seems you are NOT using git as a Capistrano strategy. At the moment capistrano-ssh-doctor supports only git.'
-        puts 'Please change `scm` setting to `:git`.'
+        puts 'Please add a valid repo_url to your settings (git@github.com/USERNAME/REPO_NAME.git) to capistrano.'
+        puts 'Don`t forget: to add these to your Capfile:'
+        puts 'require "capistrano/scm/git"'
+        puts 'install_plugin Capistrano::SCM::Git'
         exit 1
       end
     end
@@ -50,7 +53,7 @@ namespace :ssh do
       specified_keys = fetch(:ssh_options, {})[:keys] || ''
       unless File.exists?(File.expand_path('~/.ssh/id_rsa')) ||
         File.exists?(File.expand_path('~/.ssh/id_dsa')) ||
-        File.exists?(specified_keys)
+        File.exists?(specified_keys.to_s)
         report.report_error_for('local_private_key_exists')
       end
     end
@@ -95,7 +98,7 @@ namespace :ssh do
       hosts = []
       on release_roles :all do
         with fetch(:git_environmental_variables) do
-          hosts << host unless strategy.check
+          hosts << host
         end
       end
       report.report_error_for('remote_repo_access', hosts) if hosts.any?
