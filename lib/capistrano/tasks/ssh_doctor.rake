@@ -51,9 +51,9 @@ namespace :ssh do
 
     task :private_key_exists do
       specified_keys = fetch(:ssh_options, {})[:keys] || ''
-      unless File.exists?(File.expand_path('~/.ssh/id_rsa')) ||
-        File.exists?(File.expand_path('~/.ssh/id_dsa')) ||
-        File.exists?(specified_keys.to_s)
+      unless File.exist?(File.expand_path('~/.ssh/id_rsa')) ||
+        File.exist?(File.expand_path('~/.ssh/id_dsa')) ||
+        File.exist?(specified_keys.to_s)
         report.report_error_for('local_private_key_exists')
       end
     end
